@@ -54,8 +54,10 @@ export class SseHandlerService {
       for(let dj of djs){
         let id = ("000000000000000"+ dj.color).slice(-15);
         delete (dj as any).id;
-    	  this.http.patch("https://app.silentparty-hannover.de/api/djs/"+ id ,dj).subscribe();
+    	  this.http.patch("https://app.silentparty-hannover.de/api/collections/djs/records/"+ id ,dj).subscribe();
       }
+
+
   }
   updateBanner(banner:string[]){
     //this.http.post("https://api.sp/rolltext",banner).subscribe();

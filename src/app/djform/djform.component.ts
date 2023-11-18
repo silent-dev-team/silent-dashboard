@@ -10,17 +10,17 @@ import { DJ, DJs, SseHandlerService } from '../sse-handler.service';
 export class DjformComponent implements OnInit {
 
   form = new FormGroup({
-      blau: new FormGroup({
+      blue: new FormGroup({
         name: new FormControl("", Validators.required),
         instagram: new FormControl("", Validators.required),
         music: new FormControl("", Validators.required)
       }),
-      grun: new FormGroup({
+      green: new FormGroup({
         name: new FormControl( "", Validators.required),
         instagram: new FormControl( "", Validators.required),
         music: new FormControl("", Validators.required)
       }),
-      rot: new FormGroup({
+      red: new FormGroup({
         name: new FormControl("", Validators.required),
         instagram: new FormControl("", Validators.required),
         music: new FormControl("", Validators.required)
@@ -34,7 +34,7 @@ export class DjformComponent implements OnInit {
       let patchData:any = {};
       console.log(data);
       for(let i=0;i<Math.min(3,data.length);i++){
-        patchData[data[i].color.replace("ü","u").toLowerCase()] = data[i];
+        patchData[data[i].color] = data[i];
       }
       this.form.patchValue(patchData);
     });
@@ -49,13 +49,13 @@ export class DjformComponent implements OnInit {
       return;
     }
     this.error = false;
-    let rot:DJ = this.form.value["rot"];
-    rot.color = "Rot";
-    let grun:DJ = this.form.value["grun"];
-    grun.color = "Grün";
-    let blau:DJ = this.form.value["blau"];
-    blau.color = "Blau";
-    this.sse.updateDJS([rot,grun,blau]);    
+    let rot:DJ = this.form.value["red"];
+    rot.color = "red";
+    let grun:DJ = this.form.value["green"];
+    grun.color = "green";
+    let blau:DJ = this.form.value["blue"];
+    blau.color = "blue";
+    this.sse.updateDJS([rot,grun,blau]);
 
   }
 
