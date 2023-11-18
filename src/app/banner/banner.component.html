@@ -1,0 +1,7 @@
+<marquee>
+  <div style="display: flex; align-items: center;">
+    <div [style]="'color:white; padding: 4px 18px; font-size: 6vh;' + (i%2==0?'':'font-weight: lighter')" *ngFor="let text of texts; let i = index">
+      //{{text}}
+    </div>
+  </div>
+</marquee>
